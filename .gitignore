@@ -8,5 +8,17 @@ wheels/
 
 # Virtual environments
 .venv
+
 files/
 output/
+docs/
+
+# ide specifics
+.cursor
+.vscode
+.idea
+.cursorrules
+.claude
+.cursor/
+
+.DS_Store
