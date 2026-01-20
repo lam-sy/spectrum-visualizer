@@ -127,6 +127,28 @@ def register_callbacks(app):
             return primary_active, not secondary_active
         return primary_active, secondary_active
     
+    # Toggle row selection using a store (click same row again to deselect)
+    @callback(
+        Output("allocations-selected-row", "data"),
+        [Input("allocations-table", "active_cell")],
+        [State("allocations-selected-row", "data")],
+        prevent_initial_call=True,
+    )
+    def toggle_row_selection(active_cell, current_selected):
+        if not active_cell:
+            return current_selected
+        
+        clicked_row = active_cell.get("row")
+        if clicked_row is None:
+            return current_selected
+        
+        # If clicking the same row that's already selected, deselect it
+        if current_selected is not None and clicked_row == current_selected:
+            return None
+        
+        # Otherwise select the clicked row
+        return clicked_row
+    
     # Main callback: Update allocations table based on all filters
     @callback(
         Output("allocations-table", "data"),
@@ -199,59 +221,51 @@ def register_callbacks(app):
     # Update footnotes table when allocation row is selected
     @callback(
         Output("footnotes-table", "data"),
-        [Input("allocations-table", "selected_rows"),
-         Input("allocations-table", "active_cell")],
-        [State("allocations-table", "data")],
+        [Input("allocations-selected-row", "data"),
+         Input("allocations-table", "data")],
     )
-    def update_footnotes_table(selected_rows, active_cell, table_data):
-        if not table_data:
-            return []
-        
-        # Determine row index from selected_rows or active_cell
-        row_idx = None
-        if selected_rows:
-            row_idx = selected_rows[0]
-        elif active_cell:
-            row_idx = active_cell.get("row")
-        
-        if row_idx is None or row_idx >= len(table_data):
-            return []
-        
-        row = table_data[row_idx]
-        # Parse footnote_ids from comma-separated string
-        footnote_ids_str = row.get("footnote_ids_json", "")
-        footnote_ids = [x.strip() for x in footnote_ids_str.split(",") if x.strip()]
-        
-        if not footnote_ids:
-            return []
-        
+    def update_footnotes_table(selected_row, table_data):
         footnotes_dict = get_footnotes()
-        footnotes_df = get_footnotes_for_ids(footnote_ids, footnotes_dict)
         
-        return footnotes_df.to_dict("records")
+        # If a row is selected, show only its footnotes
+        if selected_row is not None and table_data and selected_row < len(table_data):
+            row = table_data[selected_row]
+            # Parse footnote_ids from comma-separated string
+            footnote_ids_str = row.get("footnote_ids_json", "")
+            footnote_ids = [x.strip() for x in footnote_ids_str.split(",") if x.strip()]
+            
+            if footnote_ids:
+                footnotes_df = get_footnotes_for_ids(footnote_ids, footnotes_dict)
+                return footnotes_df.to_dict("records")
+        
+        # No selection - show all footnotes from current filtered allocations
+        if table_data:
+            all_footnote_ids = set()
+            for row in table_data:
+                footnote_ids_str = row.get("footnote_ids_json", "")
+                ids = [x.strip() for x in footnote_ids_str.split(",") if x.strip()]
+                all_footnote_ids.update(ids)
+            
+            if all_footnote_ids:
+                footnotes_df = get_footnotes_for_ids(list(all_footnote_ids), footnotes_dict)
+                return footnotes_df.to_dict("records")
+        
+        return []
     
     # Update applications table when allocation row is selected
     @callback(
         Output("applications-table", "data"),
-        [Input("allocations-table", "selected_rows"),
-         Input("allocations-table", "active_cell")],
+        [Input("allocations-selected-row", "data")],
         [State("allocations-table", "data")],
     )
-    def update_applications_table(selected_rows, active_cell, table_data):
-        if not table_data:
+    def update_applications_table(selected_row, table_data):
+        if not table_data or selected_row is None:
             return []
         
-        # Determine row index from selected_rows or active_cell
-        row_idx = None
-        if selected_rows:
-            row_idx = selected_rows[0]
-        elif active_cell:
-            row_idx = active_cell.get("row")
-        
-        if row_idx is None or row_idx >= len(table_data):
+        if selected_row >= len(table_data):
             return []
         
-        row = table_data[row_idx]
+        row = table_data[selected_row]
         band_start = row.get("band_start_hz", 0)
         band_end = row.get("band_end_hz", 0)
         
@@ -262,6 +276,30 @@ def register_callbacks(app):
         overlapping = get_overlapping_applications(band_start, band_end, apps_df)
         
         return overlapping[["frequency_bands", "applications", "max_power", "remarks"]].to_dict("records")
+    
+    # Update allocations table row highlight based on selected row
+    @callback(
+        Output("allocations-table", "style_data_conditional"),
+        [Input("allocations-selected-row", "data")],
+    )
+    def update_allocations_row_highlight(selected_row):
+        # Base styling: odd rows have a light background
+        base_styles = [
+            {
+                "if": {"row_index": "odd"},
+                "backgroundColor": "#f8f9fa",
+            },
+        ]
+        
+        # If a row is selected, add highlight styling for that row
+        if selected_row is not None:
+            base_styles.append({
+                "if": {"row_index": selected_row},
+                "backgroundColor": "#d4e5f7",
+                "border": "1px solid #5B3B6B",
+            })
+        
+        return base_styles
     
     # Update spectrum chart
     @callback(

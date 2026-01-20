@@ -9,7 +9,7 @@ import pandas as pd
 from .frequency import format_band_label, get_itu_band, parse_frequency_band, ranges_overlap
 
 # Default data directory
-DATA_DIR = Path(__file__).parent.parent / "files"
+DATA_DIR = Path(__file__).parent.parent / "data"
 
 
 def load_json(filepath: Path) -> Any:

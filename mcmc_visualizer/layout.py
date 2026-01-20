@@ -227,8 +227,6 @@ def create_allocations_table():
             {"name": "Footnote Numbers", "id": "footnotes_display"},
         ],
         data=[],
-        row_selectable="single",
-        selected_rows=[],
         page_action="none",
         style_table={"height": "400px", "overflowY": "auto"},
         style_header={
@@ -265,12 +263,15 @@ def create_footnotes_table():
             {"name": "Footnote Text", "id": "footnote_text"},
         ],
         data=[],
-        page_size=5,
-        style_table={"overflowX": "auto"},
+        page_action="none",
+        style_table={"height": "250px", "overflowY": "auto"},
         style_header={
             "backgroundColor": "#5B3B6B",
             "color": "white",
             "fontWeight": "bold",
+            "position": "sticky",
+            "top": 0,
+            "zIndex": 1,
         },
         style_cell={
             "textAlign": "left",
@@ -285,6 +286,8 @@ def create_footnotes_table():
                 "backgroundColor": "#f8f9fa",
             },
         ],
+        sort_action="native",
+        filter_action="native",
     )
 
 
@@ -324,30 +327,34 @@ def create_applications_table():
 
 def create_allocation_tab():
     """Create the Allocation tab content."""
-    return dbc.Row(
-        [
-            dbc.Col(
-                create_allocation_sidebar(),
-                width=3,
-                className="pe-3",
-            ),
-            dbc.Col(
-                [
-                    html.H5("Allocations", className="mb-3"),
-                    create_allocations_table(),
-                    html.H5("Allocation Footnotes", className="mt-4 mb-3"),
-                    create_footnotes_table(),
-                    html.H5(
-                        "Applications which share the same Frequency Bands [Drill-through into Licences]",
-                        className="mt-4 mb-3",
-                    ),
-                    create_applications_table(),
-                ],
-                width=9,
-            ),
-        ],
-        className="p-3",
-    )
+    return html.Div([
+        # Store for the currently selected allocation row index
+        dcc.Store(id="allocations-selected-row", data=None),
+        dbc.Row(
+            [
+                dbc.Col(
+                    create_allocation_sidebar(),
+                    width=3,
+                    className="pe-3",
+                ),
+                dbc.Col(
+                    [
+                        html.H5("Allocations", className="mb-3"),
+                        create_allocations_table(),
+                        html.H5("Allocation Footnotes", className="mt-4 mb-3"),
+                        create_footnotes_table(),
+                        html.H5(
+                            "Applications which share the same Frequency Bands [Drill-through into Licences]",
+                            className="mt-4 mb-3",
+                        ),
+                        create_applications_table(),
+                    ],
+                    width=9,
+                ),
+            ],
+            className="p-3",
+        ),
+    ])
 
 
 def create_spectrum_sidebar():
