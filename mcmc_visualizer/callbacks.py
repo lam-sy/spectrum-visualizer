@@ -110,6 +110,15 @@ def register_callbacks(app):
         elif ctx.triggered_id == "btn-secondary":
             return primary_active, not secondary_active
         return primary_active, secondary_active
+
+    @callback(
+        [Output("btn-primary", "style"), Output("btn-secondary", "style")],
+        [Input("btn-primary", "active"), Input("btn-secondary", "active")],
+    )
+    def update_allocation_button_styles(primary_active, secondary_active):
+        active_style = {"backgroundColor": "#0d6efd", "borderColor": "#0d6efd", "color": "white"}
+        inactive_style = {"backgroundColor": "#6c757d", "borderColor": "#6c757d", "color": "white"}
+        return active_style if primary_active else inactive_style, active_style if secondary_active else inactive_style
     
     # Primary/Secondary button toggle for Spectrum tab
     @callback(
@@ -126,6 +135,15 @@ def register_callbacks(app):
         elif ctx.triggered_id == "spectrum-btn-secondary":
             return primary_active, not secondary_active
         return primary_active, secondary_active
+
+    @callback(
+        [Output("spectrum-btn-primary", "style"), Output("spectrum-btn-secondary", "style")],
+        [Input("spectrum-btn-primary", "active"), Input("spectrum-btn-secondary", "active")],
+    )
+    def update_spectrum_button_styles(primary_active, secondary_active):
+        active_style = {"backgroundColor": "#0d6efd", "borderColor": "#0d6efd", "color": "white"}
+        inactive_style = {"backgroundColor": "#6c757d", "borderColor": "#6c757d", "color": "white"}
+        return active_style if primary_active else inactive_style, active_style if secondary_active else inactive_style
     
     # Toggle row selection using a store (click same row again to deselect)
     @callback(

@@ -164,22 +164,22 @@ def create_allocation_sidebar():
     allocations_df = get_allocations()
     services = get_unique_services(allocations_df)
     
-    return dbc.Card(
+    return html.Div(
         [
-            dbc.CardHeader("Allocation Name"),
-            dbc.CardBody(
-                [
-                    dcc.Dropdown(
-                        id="allocation-service-dropdown",
-                        options=[{"label": s, "value": s} for s in services],
-                        value=None,
-                        multi=True,
-                        placeholder="All",
-                    ),
-                ]
+            html.Div("Allocation Name", style={"fontWeight": "bold", "padding": "4px 8px", "backgroundColor": "#5B3B6B", "color": "white"}),
+            html.Div(
+                dcc.Dropdown(
+                    id="allocation-service-dropdown",
+                    options=[{"label": s, "value": s} for s in services],
+                    value=None,
+                    multi=True,
+                    placeholder="All",
+                    clearable=True,
+                ),
+                style={"padding": "0 8px 8px 8px"},
             ),
-            dbc.CardHeader("Primary or Secondary", className="mt-2"),
-            dbc.CardBody(
+            html.Div("Primary or Secondary", style={"fontWeight": "bold", "padding": "4px 8px", "backgroundColor": "#5B3B6B", "color": "white", "marginTop": "8px"}),
+            html.Div(
                 dbc.ButtonGroup(
                     [
                         dbc.Button(
@@ -200,19 +200,20 @@ def create_allocation_sidebar():
                     ],
                     className="w-100",
                 ),
+                style={"padding": "0 8px 8px 8px"},
             ),
-            dbc.CardHeader("Bands", className="mt-2"),
-            dbc.CardBody(
+            html.Div("Bands", style={"fontWeight": "bold", "padding": "4px 8px", "backgroundColor": "#5B3B6B", "color": "white", "marginTop": "8px"}),
+            html.Div(
                 dbc.Checklist(
                     id="band-checklist",
-                    options=[{"label": b, "value": b} for b in ITU_BAND_OPTIONS[1:]],  # Skip "All"
-                    value=[],  # All selected by default (empty = all)
+                    options=[{"label": b, "value": b} for b in ITU_BAND_OPTIONS[1:]],
+                    value=[],
                     inline=False,
                 ),
-                style={"maxHeight": "300px", "overflowY": "auto"},
+                style={"maxHeight": "300px", "overflowY": "auto", "padding": "0 8px 8px 8px"},
             ),
         ],
-        style={"height": "100%"},
+        style={"height": "100%", "border": "1px solid #dee2e6"},
     )
 
 
