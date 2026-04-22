@@ -23,6 +23,9 @@ pip install -e .
 ```bash
 # Run the Dash app
 python app.py
+
+# Or use uv
+uv run app.py
 ```
 
 Then open your browser to http://localhost:8050
@@ -34,6 +37,10 @@ The dashboard loads data from the `files/` directory:
 - `footnotes_by_service.json` - Frequency allocations with band ranges, services, and footnote references
 - `footnote.json` - Footnote text details by allocation ID  
 - `spectrum.json` - Spectrum applications with frequency bands and conditions
+
+## Data Access
+
+If you need the data for this visualizer, contact Shai.
 
 ## Project Structure
 
