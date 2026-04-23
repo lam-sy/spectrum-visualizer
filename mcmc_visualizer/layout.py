@@ -5,71 +5,77 @@ from dash import dcc, html, dash_table
 
 from .frequency import ITU_BAND_OPTIONS
 from .data import get_allocations, get_unique_services
+from .spectrum import SPECTRUM_VIEWPORT_HEIGHT_PX
 
-# Color palette for services (matches the mockup)
-SERVICE_COLORS = {
-    "Aeronautical Mobile": "#8B4B7C",
-    "Aeronautical Mobile (OR)": "#A05B8C",
-    "Aeronautical Mobile (R)": "#C46B9C",
-    "Aeronautical Mobile-Satellite (R)": "#4BA3A3",
-    "Aeronautical Radionavigation": "#5B3B6B",
-    "Amateur": "#C4A000",
-    "Amateur-Satellite": "#D4B010",
-    "Broadcasting": "#D4497A",
-    "Broadcasting-Satellite": "#9B2D5B",
-    "Earth Exploration-Satellite": "#6BA35B",
-    "Earth Exploration-Satellite (active)": "#5B934B",
-    "Earth Exploration-Satellite (passive)": "#8BC37B",
-    "Fixed": "#D46B8B",
-    "Fixed-Satellite": "#F4A3B3",
-    "Inter-Satellite": "#3B7B8B",
-    "Land Mobile": "#E4A040",
-    "Maritime Mobile": "#3B8BBB",
-    "Maritime Mobile-Satellite": "#2B6B9B",
-    "Maritime Radionavigation": "#4B5B7B",
-    "Meteorological Aids": "#6B4B6B",
-    "Meteorological-Satellite": "#8B5B8B",
-    "Mobile": "#D4D060",
-    "Mobile (distress and calling)": "#E4E080",
-    "Mobile except aeronautical mobile": "#C4C050",
-    "Mobile except aeronautical mobile (R)": "#B4B040",
-    "Mobile-Satellite": "#7BB0C0",
-    "Not Allocated": "#808080",
-    "(Not allocated)": "#808080",
-    "Radio Astronomy": "#5B5BA0",
-    "Radiodetermination-Satellite": "#9B4B6B",
-    "Radiolocation": "#7B6B9B",
-    "Radiolocation-Satellite": "#8B7BAB",
-    "Radionavigation": "#6B5B8B",
-    "Radionavigation-Satellite": "#7B6B9B",
-    "Space Operation": "#4B8B6B",
-    "Space Research": "#3B7B5B",
-    "Standard Frequency and Time Signal": "#AB8B3B",
-    "STANDARD FREQUENCY AND TIME SIGNAL": "#AB8B3B",
+BRAND_PURPLE = "#5B3B6B"
+SECTION_BORDER = "#d7cfdf"
+SECTION_SHADOW = "0 4px 14px rgba(62, 39, 78, 0.08)"
+SECTION_RADIUS = "16px"
+SECTION_PADDING = "14px 16px"
+
+ALLOCATION_SECTION_STYLE = {
+    "backgroundColor": "white",
+    "border": f"1px solid {SECTION_BORDER}",
+    "borderRadius": SECTION_RADIUS,
+    "overflow": "hidden",
+    "boxShadow": SECTION_SHADOW,
 }
 
-# Default color for unknown services
-DEFAULT_COLOR = "#888888"
+ALLOCATION_SECTION_HEADER_STYLE = {
+    "backgroundColor": BRAND_PURPLE,
+    "color": "white",
+    "fontWeight": "700",
+    "fontSize": "1.15rem",
+    "lineHeight": "1.2",
+    "padding": "12px 16px",
+    "margin": 0,
+}
 
+ALLOCATION_SECTION_BODY_STYLE = {
+    "backgroundColor": "white",
+    "padding": SECTION_PADDING,
+}
 
-def get_service_color(service: str) -> str:
-    """Get color for a service, using default if not found."""
-    # Check exact match first
-    if service in SERVICE_COLORS:
-        return SERVICE_COLORS[service]
-    
-    # Check case-insensitive match
-    service_lower = service.lower()
-    for key, color in SERVICE_COLORS.items():
-        if key.lower() == service_lower:
-            return color
-    
-    # Check partial match
-    for key, color in SERVICE_COLORS.items():
-        if key.lower() in service_lower or service_lower in key.lower():
-            return color
-    
-    return DEFAULT_COLOR
+ALLOCATION_SIDEBAR_STYLE = {
+    "height": "100%",
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "16px",
+}
+
+ALLOCATION_CONTENT_COLUMN_STYLE = {
+    "display": "flex",
+    "flexDirection": "column",
+    "gap": "16px",
+}
+
+ALLOCATION_SEGMENTED_GROUP_STYLE = {
+    "width": "100%",
+    "display": "flex",
+    "gap": "0",
+}
+
+ALLOCATION_BANDS_SCROLL_STYLE = {
+    "maxHeight": "320px",
+    "overflowY": "auto",
+    "paddingRight": "4px",
+}
+
+SPECTRUM_SERVICE_SCROLL_STYLE = {
+    "maxHeight": "500px",
+    "overflowY": "auto",
+    "paddingRight": "4px",
+}
+
+ALLOCATION_TABLE_SECTION_BODY_STYLE = {
+    **ALLOCATION_SECTION_BODY_STYLE,
+    "padding": "12px 16px 16px 16px",
+}
+
+SPECTRUM_PANEL_BODY_STYLE = {
+    **ALLOCATION_SECTION_BODY_STYLE,
+    "padding": "12px 16px 16px 16px",
+}
 
 
 def create_frequency_filter_row():
@@ -159,6 +165,21 @@ def create_frequency_filter_row():
     )
 
 
+def create_allocation_section(title: str, content, body_style: dict | None = None):
+    """Create a shared framed section for the Allocation tab."""
+    merged_body_style = dict(ALLOCATION_SECTION_BODY_STYLE)
+    if body_style:
+        merged_body_style.update(body_style)
+
+    return html.Div(
+        [
+            html.Div(title, style=ALLOCATION_SECTION_HEADER_STYLE),
+            html.Div(content, style=merged_body_style),
+        ],
+        style=ALLOCATION_SECTION_STYLE,
+    )
+
+
 def create_allocation_sidebar():
     """Create the left sidebar for the Allocation tab."""
     allocations_df = get_allocations()
@@ -166,8 +187,8 @@ def create_allocation_sidebar():
     
     return html.Div(
         [
-            html.Div("Allocation Name", style={"fontWeight": "bold", "padding": "4px 8px", "backgroundColor": "#5B3B6B", "color": "white"}),
-            html.Div(
+            create_allocation_section(
+                "Allocation Name",
                 dcc.Dropdown(
                     id="allocation-service-dropdown",
                     options=[{"label": s, "value": s} for s in services],
@@ -176,10 +197,9 @@ def create_allocation_sidebar():
                     placeholder="All",
                     clearable=True,
                 ),
-                style={"padding": "0 8px 8px 8px"},
             ),
-            html.Div("Primary or Secondary", style={"fontWeight": "bold", "padding": "4px 8px", "backgroundColor": "#5B3B6B", "color": "white", "marginTop": "8px"}),
-            html.Div(
+            create_allocation_section(
+                "Primary or Secondary",
                 dbc.ButtonGroup(
                     [
                         dbc.Button(
@@ -188,7 +208,7 @@ def create_allocation_sidebar():
                             color="primary",
                             outline=False,
                             active=True,
-                            className="me-1",
+                            style={"width": "50%"},
                         ),
                         dbc.Button(
                             "Secondary",
@@ -196,24 +216,24 @@ def create_allocation_sidebar():
                             color="secondary",
                             outline=False,
                             active=True,
+                            style={"width": "50%"},
                         ),
                     ],
-                    className="w-100",
+                    style=ALLOCATION_SEGMENTED_GROUP_STYLE,
                 ),
-                style={"padding": "0 8px 8px 8px"},
             ),
-            html.Div("Bands", style={"fontWeight": "bold", "padding": "4px 8px", "backgroundColor": "#5B3B6B", "color": "white", "marginTop": "8px"}),
-            html.Div(
+            create_allocation_section(
+                "Bands",
                 dbc.Checklist(
                     id="band-checklist",
                     options=[{"label": b, "value": b} for b in ITU_BAND_OPTIONS[1:]],
                     value=[],
                     inline=False,
                 ),
-                style={"maxHeight": "300px", "overflowY": "auto", "padding": "0 8px 8px 8px"},
+                body_style=ALLOCATION_BANDS_SCROLL_STYLE,
             ),
         ],
-        style={"height": "100%", "border": "1px solid #dee2e6"},
+        style=ALLOCATION_SIDEBAR_STYLE,
     )
 
 
@@ -231,7 +251,7 @@ def create_allocations_table():
         page_action="none",
         style_table={"height": "400px", "overflowY": "auto"},
         style_header={
-            "backgroundColor": "#5B3B6B",
+            "backgroundColor": BRAND_PURPLE,
             "color": "white",
             "fontWeight": "bold",
             "position": "sticky",
@@ -267,7 +287,7 @@ def create_footnotes_table():
         page_action="none",
         style_table={"height": "250px", "overflowY": "auto"},
         style_header={
-            "backgroundColor": "#5B3B6B",
+            "backgroundColor": BRAND_PURPLE,
             "color": "white",
             "fontWeight": "bold",
             "position": "sticky",
@@ -306,7 +326,7 @@ def create_applications_table():
         page_size=5,
         style_table={"overflowX": "auto"},
         style_header={
-            "backgroundColor": "#5B3B6B",
+            "backgroundColor": BRAND_PURPLE,
             "color": "white",
             "fontWeight": "bold",
         },
@@ -340,17 +360,24 @@ def create_allocation_tab():
                 ),
                 dbc.Col(
                     [
-                        html.H5("Allocations", className="mb-3"),
-                        create_allocations_table(),
-                        html.H5("Allocation Footnotes", className="mt-4 mb-3"),
-                        create_footnotes_table(),
-                        html.H5(
-                            "Applications which share the same Frequency Bands [Drill-through into Licences]",
-                            className="mt-4 mb-3",
+                        create_allocation_section(
+                            "Allocations",
+                            create_allocations_table(),
+                            body_style=ALLOCATION_TABLE_SECTION_BODY_STYLE,
                         ),
-                        create_applications_table(),
+                        create_allocation_section(
+                            "Allocation Footnotes",
+                            create_footnotes_table(),
+                            body_style=ALLOCATION_TABLE_SECTION_BODY_STYLE,
+                        ),
+                        create_allocation_section(
+                            "Applications which share the same Frequency Bands [Drill-through into Licences]",
+                            create_applications_table(),
+                            body_style=ALLOCATION_TABLE_SECTION_BODY_STYLE,
+                        ),
                     ],
                     width=9,
+                    style=ALLOCATION_CONTENT_COLUMN_STYLE,
                 ),
             ],
             className="p-3",
@@ -363,10 +390,10 @@ def create_spectrum_sidebar():
     allocations_df = get_allocations()
     services = get_unique_services(allocations_df)
     
-    return dbc.Card(
+    return html.Div(
         [
-            dbc.CardHeader("Primary or Secondary"),
-            dbc.CardBody(
+            create_allocation_section(
+                "Primary or Secondary",
                 dbc.ButtonGroup(
                     [
                         dbc.Button(
@@ -375,7 +402,7 @@ def create_spectrum_sidebar():
                             color="primary",
                             outline=False,
                             active=True,
-                            className="me-1",
+                            style={"width": "50%"},
                         ),
                         dbc.Button(
                             "Secondary",
@@ -383,23 +410,24 @@ def create_spectrum_sidebar():
                             color="secondary",
                             outline=False,
                             active=True,
+                            style={"width": "50%"},
                         ),
                     ],
-                    className="w-100",
+                    style=ALLOCATION_SEGMENTED_GROUP_STYLE,
                 ),
             ),
-            dbc.CardHeader("Allocation Name", className="mt-2"),
-            dbc.CardBody(
+            create_allocation_section(
+                "Allocation Name",
                 dbc.Checklist(
                     id="spectrum-service-checklist",
                     options=[{"label": s, "value": s} for s in services],
                     value=services,  # All selected by default
                     inline=False,
                 ),
-                style={"maxHeight": "500px", "overflowY": "auto"},
+                body_style=SPECTRUM_SERVICE_SCROLL_STYLE,
             ),
         ],
-        style={"height": "100%"},
+        style=ALLOCATION_SIDEBAR_STYLE,
     )
 
 
@@ -413,23 +441,41 @@ def create_spectrum_tab():
                 className="pe-3",
             ),
             dbc.Col(
-                html.Div(
-                    dcc.Graph(
-                        id="spectrum-chart",
-                        config={
-                            "displayModeBar": False,
-                            "scrollZoom": False,
-                            "staticPlot": False,
+                create_allocation_section(
+                    "Spectrum",
+                    html.Div(
+                        dcc.Graph(
+                            id="spectrum-chart",
+                            responsive=False,
+                            config={
+                                "displayModeBar": False,
+                                "scrollZoom": False,
+                                "staticPlot": False,
+                            },
+                        ),
+                        style={
+                            "height": f"{SPECTRUM_VIEWPORT_HEIGHT_PX}px",
+                            "overflowY": "scroll",
+                            "overflowX": "hidden",
                         },
                     ),
-                    style={"height": "75vh", "overflowY": "scroll", "overflowX": "hidden"},
+                    body_style=SPECTRUM_PANEL_BODY_STYLE,
                 ),
                 width=7,
             ),
             dbc.Col(
-                html.Div(id="spectrum-legend"),
+                create_allocation_section(
+                    "Legend",
+                    html.Div(
+                        id="spectrum-legend",
+                        style={
+                            "height": f"{SPECTRUM_VIEWPORT_HEIGHT_PX}px",
+                            "overflowY": "auto",
+                        },
+                    ),
+                    body_style=SPECTRUM_PANEL_BODY_STYLE,
+                ),
                 width=3,
-                style={"height": "75vh", "overflowY": "auto"},
             ),
         ],
         className="p-3",

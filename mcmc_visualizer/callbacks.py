@@ -17,9 +17,42 @@ from .frequency import (
     value_with_unit_to_hz,
     ITU_BANDS,
     ranges_overlap,
-    format_frequency,
 )
-from .layout import get_service_color
+from .spectrum import build_spectrum_figure
+
+
+def allocation_toggle_style(active: bool, side: str) -> dict:
+    """Return consistent segmented-control styles for Allocation filters."""
+    border_radius = "12px 0 0 12px" if side == "left" else "0 12px 12px 0"
+    border_right = "none" if side == "left" else "1px solid #c8bfd3"
+
+    style = {
+        "width": "50%",
+        "padding": "12px 0",
+        "fontWeight": "600",
+        "fontSize": "1rem",
+        "border": "1px solid #c8bfd3",
+        "borderRight": border_right,
+        "borderRadius": border_radius,
+        "boxShadow": "none",
+        "transition": "all 0.15s ease",
+    }
+
+    if active:
+        style.update({
+            "backgroundColor": "#5B3B6B",
+            "borderColor": "#5B3B6B",
+            "color": "white",
+        })
+        if side == "left":
+            style["borderRight"] = "none"
+    else:
+        style.update({
+            "backgroundColor": "white",
+            "color": "#5B3B6B",
+        })
+
+    return style
 
 
 def filter_allocations_by_frequency(
@@ -116,9 +149,10 @@ def register_callbacks(app):
         [Input("btn-primary", "active"), Input("btn-secondary", "active")],
     )
     def update_allocation_button_styles(primary_active, secondary_active):
-        active_style = {"backgroundColor": "#0d6efd", "borderColor": "#0d6efd", "color": "white"}
-        inactive_style = {"backgroundColor": "#6c757d", "borderColor": "#6c757d", "color": "white"}
-        return active_style if primary_active else inactive_style, active_style if secondary_active else inactive_style
+        return (
+            allocation_toggle_style(primary_active, "left"),
+            allocation_toggle_style(secondary_active, "right"),
+        )
     
     # Primary/Secondary button toggle for Spectrum tab
     @callback(
@@ -141,9 +175,10 @@ def register_callbacks(app):
         [Input("spectrum-btn-primary", "active"), Input("spectrum-btn-secondary", "active")],
     )
     def update_spectrum_button_styles(primary_active, secondary_active):
-        active_style = {"backgroundColor": "#0d6efd", "borderColor": "#0d6efd", "color": "white"}
-        inactive_style = {"backgroundColor": "#6c757d", "borderColor": "#6c757d", "color": "white"}
-        return active_style if primary_active else inactive_style, active_style if secondary_active else inactive_style
+        return (
+            allocation_toggle_style(primary_active, "left"),
+            allocation_toggle_style(secondary_active, "right"),
+        )
     
     # Toggle row selection using a store (click same row again to deselect)
     @callback(
@@ -354,83 +389,7 @@ def register_callbacks(app):
         if df.empty:
             return go.Figure()
         
-        # Group by unique frequency bands
-        bands = df.groupby(["band_start_hz", "band_end_hz"]).agg({
-            "service": list,
-            "status": list,
-            "band_label": "first",
-        }).reset_index()
-        
-        # Sort by start frequency
-        bands = bands.sort_values("band_start_hz").reset_index(drop=True)
-        
-        # Create figure
-        fig = go.Figure()
-        
-        # Track which services we've already added to legend
-        legend_shown = set()
-        
-        # Build stacked bar chart
-        for _, row in bands.iterrows():
-            services = row["service"]
-            band_label = row["band_label"]
-            band_start = row["band_start_hz"]
-            band_end = row["band_end_hz"]
-            
-            # Calculate segment width for each service
-            num_services = len(services)
-            
-            for service in services:
-                color = get_service_color(service)
-                
-                # Only show in legend if we haven't seen this service yet
-                show_in_legend = service not in legend_shown
-                if show_in_legend:
-                    legend_shown.add(service)
-                
-                # Add a bar segment for this service
-                fig.add_trace(go.Bar(
-                    y=[band_label],
-                    x=[1 / num_services],  # Equal width for each service in the band
-                    orientation="h",
-                    marker_color=color,
-                    name=service,
-                    legendgroup=service,
-                    showlegend=show_in_legend,
-                    hovertemplate=f"<b>{service}</b><br>{band_label}<extra></extra>",
-                    customdata=[[band_start, band_end, service]],
-                ))
-        
-        # Update layout
-        fig.update_layout(
-            barmode="stack",
-            xaxis=dict(
-                showticklabels=False,
-                showgrid=False,
-                fixedrange=True,
-            ),
-            yaxis=dict(
-                title="",
-                autorange="reversed",
-                tickfont=dict(size=11),
-                fixedrange=True,
-            ),
-            showlegend=False,
-            margin=dict(l=160, r=10, t=10, b=10),
-            height=len(bands) * 30,
-            plot_bgcolor="white",
-            dragmode=False,
-        )
-        
-        # Build legend data for custom legend component
-        legend_items = []
-        for service in sorted(legend_shown):
-            legend_items.append({
-                "service": service,
-                "color": get_service_color(service),
-            })
-        
-        return fig
+        return build_spectrum_figure(df)
     
     # Render custom legend
     @callback(
