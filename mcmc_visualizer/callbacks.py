@@ -1,6 +1,7 @@
 """Dash callbacks for interactivity and data filtering."""
 
 from dash import Input, Output, State, callback, no_update, html
+import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
@@ -19,6 +20,19 @@ from .frequency import (
     ranges_overlap,
 )
 from .spectrum import build_spectrum_figure
+
+
+SPECTRUM_SELECTION_NOTICE_STYLE = {
+    "display": "flex",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "gap": "12px",
+    "padding": "10px 12px",
+    "marginBottom": "12px",
+    "backgroundColor": "#f3edf7",
+    "border": "1px solid #d7cfdf",
+    "borderRadius": "12px",
+}
 
 
 def allocation_toggle_style(active: bool, side: str) -> dict:
@@ -53,6 +67,60 @@ def allocation_toggle_style(active: bool, side: str) -> dict:
         })
 
     return style
+
+
+def parse_spectrum_click_selection(click_data):
+    """Extract a spectrum selection from Plotly clickData."""
+    if not click_data:
+        return None
+
+    point = click_data.get("points", [{}])[0]
+    customdata = point.get("customdata", [])
+
+    if len(customdata) >= 3:
+        return {
+            "band_start_hz": customdata[0],
+            "band_end_hz": customdata[1],
+            "service": customdata[2],
+            "curve_number": point.get("curveNumber"),
+            "point_number": point.get("pointNumber"),
+        }
+
+    return None
+
+
+def selections_match(next_selection, current_selection):
+    """Return True when two spectrum selections target the same visible segment."""
+    if not next_selection or not current_selection:
+        return False
+
+    keys = ("band_start_hz", "band_end_hz", "service", "curve_number", "point_number")
+    return all(next_selection.get(key) == current_selection.get(key) for key in keys)
+
+
+def resolve_spectrum_selection(triggered_id, click_data, clear_clicks, current_selection):
+    """Resolve the next spectrum selection state from chart and clear actions."""
+    if triggered_id == "clear-spectrum-selection-btn":
+        return None
+
+    if triggered_id != "spectrum-chart":
+        return current_selection
+
+    next_selection = parse_spectrum_click_selection(click_data)
+    if selections_match(next_selection, current_selection):
+        return None
+
+    return next_selection
+
+
+def build_spectrum_selection_notice(selection):
+    """Build the Allocation-tab notice for an active spectrum selection."""
+    if not selection:
+        return "", {"display": "none"}
+
+    service = selection.get("service", "selected service")
+    message = f"Spectrum selection active: showing allocations for {service}."
+    return message, dict(SPECTRUM_SELECTION_NOTICE_STYLE)
 
 
 def filter_allocations_by_frequency(
@@ -125,6 +193,57 @@ def filter_allocations_by_status(
         return pd.DataFrame(columns=df.columns)
 
 
+def resolve_allocation_row_selection(active_cell, current_selected):
+    """Toggle the selected allocation row from allocation table state."""
+    if not active_cell:
+        return current_selected, False
+
+    clicked_row = active_cell.get("row")
+    if clicked_row is None:
+        return current_selected, False
+
+    if current_selected is not None and clicked_row == current_selected:
+        return None, True
+
+    return clicked_row, True
+
+
+def parse_footnote_selection(active_cell, footnotes_data):
+    """Extract the clicked footnote number from footnote table state."""
+    if not active_cell or not footnotes_data:
+        return None
+
+    clicked_row = active_cell.get("row")
+    if clicked_row is None or clicked_row >= len(footnotes_data):
+        return None
+
+    return footnotes_data[clicked_row].get("footnote_number")
+
+
+def resolve_footnote_selection(active_cell, footnotes_data, current_selection):
+    """Toggle the selected footnote number from a footnote table click."""
+    clicked_footnote = parse_footnote_selection(active_cell, footnotes_data)
+    if not clicked_footnote:
+        return current_selection, False
+
+    if clicked_footnote == current_selection:
+        return None, True
+
+    return clicked_footnote, True
+
+
+def filter_allocations_by_footnote(
+    df: pd.DataFrame,
+    selected_footnote: str | None,
+) -> pd.DataFrame:
+    """Filter allocations to rows containing a selected footnote."""
+    if df.empty or not selected_footnote:
+        return df
+
+    mask = df["footnote_ids"].apply(lambda ids: selected_footnote in ids)
+    return pd.DataFrame(df[mask])
+
+
 def register_callbacks(app):
     """Register all Dash callbacks."""
     
@@ -182,25 +301,17 @@ def register_callbacks(app):
     
     # Toggle row selection using a store (click same row again to deselect)
     @callback(
-        Output("allocations-selected-row", "data"),
+        [Output("allocations-selected-row", "data"), Output("allocations-table", "active_cell")],
         [Input("allocations-table", "active_cell")],
         [State("allocations-selected-row", "data")],
         prevent_initial_call=True,
     )
     def toggle_row_selection(active_cell, current_selected):
-        if not active_cell:
-            return current_selected
-        
-        clicked_row = active_cell.get("row")
-        if clicked_row is None:
-            return current_selected
-        
-        # If clicking the same row that's already selected, deselect it
-        if current_selected is not None and clicked_row == current_selected:
-            return None
-        
-        # Otherwise select the clicked row
-        return clicked_row
+        next_selection, should_reset_cell = resolve_allocation_row_selection(
+            active_cell,
+            current_selected,
+        )
+        return next_selection, None if should_reset_cell else no_update
     
     # Main callback: Update allocations table based on all filters
     @callback(
@@ -216,12 +327,13 @@ def register_callbacks(app):
             Input("btn-secondary", "active"),
             Input("band-checklist", "value"),
             Input("spectrum-selection-store", "data"),
+            Input("selected-footnote-store", "data"),
         ],
     )
     def update_allocations_table(
         itu_band, freq_from, freq_from_unit, freq_to, freq_to_unit,
         selected_services, show_primary, show_secondary, band_checklist,
-        spectrum_selection
+        spectrum_selection, selected_footnote
     ):
         df = get_allocations()
         
@@ -239,6 +351,9 @@ def register_callbacks(app):
         # Apply ITU band checklist filter
         if band_checklist:
             df = pd.DataFrame(df[df["itu_band"].isin(band_checklist)])
+
+        # Apply footnote drill-down filter
+        df = filter_allocations_by_footnote(df, selected_footnote)
         
         # If spectrum selection is active, further filter to that range+service
         if spectrum_selection:
@@ -270,6 +385,27 @@ def register_callbacks(app):
         )
         
         return display_df[["band_label", "service", "status", "footnotes_display", "band_start_hz", "band_end_hz", "footnote_ids_json"]].to_dict("records")
+
+    @callback(
+        [Output("spectrum-selection-text", "children"), Output("spectrum-selection-notice", "style")],
+        [Input("spectrum-selection-store", "data")],
+    )
+    def update_spectrum_selection_notice(spectrum_selection):
+        return build_spectrum_selection_notice(spectrum_selection)
+
+    @callback(
+        [Output("selected-footnote-store", "data"), Output("footnotes-table", "active_cell")],
+        [Input("footnotes-table", "active_cell")],
+        [State("footnotes-table", "data"), State("selected-footnote-store", "data")],
+        prevent_initial_call=True,
+    )
+    def toggle_footnote_selection(active_cell, footnotes_data, current_selection):
+        next_selection, should_reset_cell = resolve_footnote_selection(
+            active_cell,
+            footnotes_data,
+            current_selection,
+        )
+        return next_selection, None if should_reset_cell else no_update
     
     # Update footnotes table when allocation row is selected
     @callback(
@@ -435,24 +571,19 @@ def register_callbacks(app):
     # Handle spectrum chart click to update selection store
     @callback(
         Output("spectrum-selection-store", "data"),
-        [Input("spectrum-chart", "clickData")],
+        [Input("spectrum-chart", "clickData"), Input("clear-spectrum-selection-btn", "n_clicks")],
+        [State("spectrum-selection-store", "data")],
         prevent_initial_call=True,
     )
-    def handle_spectrum_click(click_data):
-        if not click_data:
-            return None
-        
-        point = click_data.get("points", [{}])[0]
-        customdata = point.get("customdata", [])
-        
-        if len(customdata) >= 3:
-            return {
-                "band_start_hz": customdata[0],
-                "band_end_hz": customdata[1],
-                "service": customdata[2],
-            }
-        
-        return None
+    def handle_spectrum_click(click_data, clear_clicks, current_selection):
+        from dash import ctx
+
+        return resolve_spectrum_selection(
+            ctx.triggered_id,
+            click_data,
+            clear_clicks,
+            current_selection,
+        )
     
     # Switch to Allocation tab when spectrum is clicked
     @callback(

@@ -32,7 +32,7 @@ Then open your browser to http://localhost:8050
 
 ## Data Sources
 
-The dashboard loads data from the `files/` directory:
+The dashboard loads data from the `data/` directory:
 
 - `footnotes_by_service.json` - Frequency allocations with band ranges, services, and footnote references
 - `footnote.json` - Footnote text details by allocation ID  
@@ -53,7 +53,7 @@ If you need the data for this visualizer, contact Shai.
 │   ├── data.py               # Data loading and normalization
 │   ├── frequency.py          # Frequency parsing and ITU band utilities
 │   └── layout.py             # Dashboard layout components
-├── files/                    # Data files
+├── data/                     # Data files, not committed
 ├── docs/                     # UI mockup images
 └── pyproject.toml
 ```

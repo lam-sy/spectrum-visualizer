@@ -14,8 +14,16 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 
 def load_json(filepath: Path) -> Any:
     """Load JSON file and return parsed data."""
-    with open(filepath, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(
+            f"Required data file is missing: {filepath}. "
+            "The JSON data files are not committed to this repository. "
+            "Create a data/ directory at the project root and add "
+            "footnotes_by_service.json, footnote.json, and spectrum.json."
+        ) from exc
 
 
 def load_allocations(filepath: Optional[Path] = None) -> pd.DataFrame:

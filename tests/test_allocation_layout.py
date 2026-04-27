@@ -35,6 +35,19 @@ class AllocationLayoutTests(unittest.TestCase):
             self.assertEqual(section_props["style"], ALLOCATION_SECTION_STYLE)
             self.assertEqual(header.to_plotly_json()["props"]["style"], ALLOCATION_SECTION_HEADER_STYLE)
 
+    def test_allocation_tab_includes_static_clear_spectrum_button(self):
+        tab = create_allocation_tab()
+        row = tab.children[1]
+        right_column = row.children[1]
+        allocations_section = right_column.children[0]
+        allocations_body = allocations_section.children[1]
+        content_wrapper = allocations_body.children
+        notice = content_wrapper.children[0]
+        clear_button = notice.children[1]
+
+        self.assertEqual(notice.id, "spectrum-selection-notice")
+        self.assertEqual(clear_button.id, "clear-spectrum-selection-btn")
+
 
 if __name__ == "__main__":
     unittest.main()

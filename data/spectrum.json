@@ -1,0 +1,806 @@
+[
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "3155 kHz to 3400 kHz",
+        "Maximum transmit power/ field strength/Conditions": "13.5 dBuA/m at 10m",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "6765 kHz to 6795 kHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW Equivalent Isotropically Radiated Power (EIRP)",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "10200 kHz to 11000 kHz",
+        "Maximum transmit power/ field strength/Conditions": "10 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "13553 kHz to 13567 kHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "26.957 MHz to 27.283 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "40.660 MHz to 40.700 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "87.5 MHz to 108 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 nW ERP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "433 MHz to 435 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "916 MHz to 919 MHz",
+        "Maximum transmit power/ field strength/Conditions": "25 mW EIRP with duty cycle <1% or Frequency Hopping or Listen Before Talk (LBT)",
+        "Reference/Remarks": "Refer to Second Schedule on detailed conditions of operation"
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "919 MHz to 923 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "923 MHz to 924 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500 mW EIRP with duty cycle <1% or Frequency Hopping or LBT",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "1880 MHz to 1900 MHz",
+        "Maximum transmit power/ field strength/Conditions": "250 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "2400 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "5150 MHz to 5250 MHz",
+        "Maximum transmit power/ field strength/Conditions": "200 mW EIRP (For indoor and outdoor use only)",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "5150 MHz to 5350 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP (For indoor use only)",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "5470 MHz to 5650 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "5725 MHz to 5875 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "5925 MHz to 6425 MHz",
+        "Maximum transmit power/ field strength/Conditions": "25 mW EIRP\n(For indoor and outdoor use)",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "5925 MHz to 6425 MHz",
+        "Maximum transmit power/ field strength/Conditions": "250 mW EIRP\n(For indoor use only)",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "24 GHz to 24.25 GHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "57 GHz to 64 GHz",
+        "Maximum transmit power/ field strength/Conditions": "10 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "76 GHz to 77 GHz",
+        "Maximum transmit power/ field strength/Conditions": "5 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "122 GHz to 123 GHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Short - range Radiocommunication Device (SRD)",
+        "Frequency bands": "244 GHz to 246 GHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Personal Radio Service (PRS) device",
+        "Frequency bands": "26.965 MHz to 27.405 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Refer to tables in Fourth Schedule for maximum permitted transmit power",
+        "Reference/Remarks": "Refer to Fourth Schedule on detailed conditions of operation and channelling plan"
+    },
+    {
+        "Applications": "Personal Radio Service (PRS) device",
+        "Frequency bands": "446.00625 MHz to 446.093750 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Refer to tables in Fourth Schedule for maximum permitted transmit power",
+        "Reference/Remarks": "Refer to Fourth Schedule on detailed conditions of operation and channelling plan"
+    },
+    {
+        "Applications": "Personal Radio Service (PRS) device",
+        "Frequency bands": "446.103125 MHz to 446.196875 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Refer to tables in Fourth Schedule for maximum permitted transmit power",
+        "Reference/Remarks": "Refer to Fourth Schedule on detailed conditions of operation and channelling plan"
+    },
+    {
+        "Applications": "Cordless telephone device",
+        "Frequency bands": "46.610 MHz to 46.970 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Cordless telephone device",
+        "Frequency bands": "49.610 MHz to 49.970 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Cordless telephone device",
+        "Frequency bands": "1880 MHz to 1900 MHz",
+        "Maximum transmit power/ field strength/Conditions": "250 mW EIRP",
+        "Reference/Remarks": "Refer to Fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Cordless telephone device",
+        "Frequency bands": "2400 MHz to 2483.5 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Two-way radio pager access device",
+        "Frequency bands": "152 MHz to 153 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Sixth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Fixed- Satellite Service (FSS) Earth Station",
+        "Frequency bands": "3400 MHz to 4200 MHz (downlink)\u00b9 / 5925 MHz to 6725 MHz (uplink)",
+        "Maximum transmit power/ field strength/Conditions": "Refer to tables in Eighth Schedule for maximum permitted transmit power",
+        "Reference/Remarks": "Refer to Eighth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Fixed- Satellite Service (FSS) Earth Station",
+        "Frequency bands": "10700 MHz to 12750 MHz (downlink) / 13750 MHz to 14500 MHz (uplink)",
+        "Maximum transmit power/ field strength/Conditions": "Refer to tables in Eighth Schedule for maximum permitted transmit power",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Fixed- Satellite Service (FSS) Earth Station",
+        "Frequency bands": "19700 MHz to 21200 MHz (downlink) / 29500 MHz to 30000 MHz (uplink)",
+        "Maximum transmit power/ field strength/Conditions": "Refer to tables in Eighth Schedule for maximum permitted transmit power",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Infrared device",
+        "Frequency bands": "187.5 THz to 420 THz",
+        "Maximum transmit power/ field strength/Conditions": "125 mW EIRP",
+        "Reference/Remarks": "Refer to Ninth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Remote controlled device",
+        "Frequency bands": "26.965 MHz to 27.275 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Tenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Remote controlled device",
+        "Frequency bands": "40 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Tenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Remote controlled device",
+        "Frequency bands": "47 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Tenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Remote controlled device",
+        "Frequency bands": "49 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Tenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Remote controlled device",
+        "Frequency bands": "303 MHz to 320 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Tenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Remote controlled device",
+        "Frequency bands": "433 MHz to 435 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Tenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Security device",
+        "Frequency bands": "3 kHz to 195 kHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Eleventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Security device",
+        "Frequency bands": "228.0063 MHz to 228.9937 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Eleventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Security device",
+        "Frequency bands": "303 MHz to 320 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Eleventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Security device",
+        "Frequency bands": "400 MHz to 402 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Eleventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Security device",
+        "Frequency bands": "433 MHz to 435 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Eleventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Security device",
+        "Frequency bands": "76 GHz to 77 GHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Eleventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "26.95728 MHz to 27.28272 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "40.435 MHz to 40.925 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "87.5 MHz to 108 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 nW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "174 MHz to 230 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "470 MHz to 694 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "2400 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Wireless microphone device",
+        "Frequency bands": "5725 MHz to 5850 MHz",
+        "Maximum transmit power/ field strength/Conditions": "50 mW EIRP",
+        "Reference/Remarks": "Refer to Twelfth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Free Space Optic (FSO) device",
+        "Frequency bands": "193.5484 THz",
+        "Maximum transmit power/ field strength/Conditions": "650 mW EIRP",
+        "Reference/Remarks": "Refer to Thirteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Free Space Optic (FSO) device",
+        "Frequency bands": "352.9412 THz",
+        "Maximum transmit power/ field strength/Conditions": "650 mW EIRP",
+        "Reference/Remarks": "Refer to Thirteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "6765 kHz to 6795 kHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "13.553 MHz to 13.567 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "26.957 MHz to 27.283 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "40.66 MHz to 40.70 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "2400 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "5725 MHz to 5875 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "24 GHz to 24.25 GHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "61 GHz to 61.5 GHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "122 GHz to 123 GHz;",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Industrial, Scientific and Medical (ISM) device",
+        "Frequency bands": "244 GHz to 246 GHz",
+        "Maximum transmit power/ field strength/Conditions": "500mW EIRP",
+        "Reference/Remarks": "Refer to Fourteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Radio Frequency Identification Device (RFID)",
+        "Frequency bands": "13.553 MHz to 13.567 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Fifteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Radio Frequency Identification Device (RFID)",
+        "Frequency bands": "433 MHz to 435 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Fifteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Radio Frequency Identification Device (RFID)",
+        "Frequency bands": "919 MHz to 923 MHz",
+        "Maximum transmit power/ field strength/Conditions": "2 W ERP",
+        "Reference/Remarks": "Refer to Fifteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Radio Frequency Identification Device (RFID)",
+        "Frequency bands": "2400 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500 mW EIRP",
+        "Reference/Remarks": "Refer to Fifteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Active medical implant",
+        "Frequency bands": "9 kHz to 315 kHz",
+        "Maximum transmit power/ field strength/Conditions": "30 dB\u00b5A/m at 10 m",
+        "Reference/Remarks": "Refer to Sixteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Active medical implant",
+        "Frequency bands": "401 MHz to 402 MHz",
+        "Maximum transmit power/ field strength/Conditions": "25 \u00b5W ERP for devices with Adaptive Frequency Agility (AFA) and Listen Before Talk (LBT)",
+        "Reference/Remarks": "Refer to Sixteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Active medical implant",
+        "Frequency bands": "402 MHz to 405 MHz",
+        "Maximum transmit power/ field strength/Conditions": "250 nW ERP for devices using Low Power Low Duty Cycle (LPLDC)",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Active medical implant",
+        "Frequency bands": "402 MHz to 405 MHz",
+        "Maximum transmit power/ field strength/Conditions": "25 \u00b5W ERP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Active medical implant",
+        "Frequency bands": "405 MHz to 406 MHz",
+        "Maximum transmit power/ field strength/Conditions": "25 \u00b5W ERP for devices with AFA and LBT",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Active medical implant",
+        "Frequency bands": "405 MHz to 406 MHz",
+        "Maximum transmit power/ field strength/Conditions": "250 nW ERP for devices using LPLDC",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Aeronautical mobile telemetry access device",
+        "Frequency bands": "2400 MHz to 2483.5 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Seventeenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Aeronautical mobile telemetry access device",
+        "Frequency bands": "5150 MHz to 5350 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Seventeenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Aeronautical mobile telemetry access device",
+        "Frequency bands": "5470 MHz to 5725 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Seventeenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Aeronautical mobile telemetry access device",
+        "Frequency bands": "5725 MHz to 5825 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Seventeenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Mobile satellite access device",
+        "Frequency bands": "1518 MHz to 1559 MHz",
+        "Maximum transmit power/ field strength/Conditions": "7 W EIRP",
+        "Reference/Remarks": "Refer to Eighteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Mobile satellite access device",
+        "Frequency bands": "1610 MHz to 1660.5 MHz",
+        "Maximum transmit power/ field strength/Conditions": "7 W EIRP",
+        "Reference/Remarks": "Refer to Eighteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Mobile satellite access device",
+        "Frequency bands": "1668 MHz to 1668.4 MHz",
+        "Maximum transmit power/ field strength/Conditions": "7 W EIRP",
+        "Reference/Remarks": "Refer to Eighteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Mobile satellite access device",
+        "Frequency bands": "1980 MHz to 2010 MHz",
+        "Maximum transmit power/ field strength/Conditions": "7 W EIRP",
+        "Reference/Remarks": "Refer to Eighteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Mobile satellite access device",
+        "Frequency bands": "2170 MHz to 2200 MHz",
+        "Maximum transmit power/ field strength/Conditions": "7 W EIRP",
+        "Reference/Remarks": "Refer to Eighteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Mobile satellite access device",
+        "Frequency bands": "2483.5 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "7 W EIRP",
+        "Reference/Remarks": "Refer to Eighteenth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "10.7 GHz to 10.95 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "10.95 GHz to 11.20 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "11.20 GHz to 11.45 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "11.45 GHz to 11.70 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "11.523 GHz to 11.577 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "11.70 GHz to 11.95 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "12.20 GHz to 12.50 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite broadcasting receiver device",
+        "Frequency bands": "12.443 GHz to 12.497 GHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Nineteenth and Twenty-eighth Schedules on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite radionavigation receiver device",
+        "Frequency bands": "1164 MHz to 1400 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Twenty-third Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite radionavigation receiver device",
+        "Frequency bands": "1559 MHz to 1610 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Twenty-third Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Satellite radionavigation receiver device",
+        "Frequency bands": "5000 MHz to 5030 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Receive only",
+        "Reference/Remarks": "Refer to Twenty-third Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "CCTV access device",
+        "Frequency bands": "2400 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Twenty-fourth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "CCTV access device",
+        "Frequency bands": "4940 MHz to 4990 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Twenty-fourth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "CCTV access device",
+        "Frequency bands": "5150 MHz to 5350 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Twenty-fourth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "CCTV access device",
+        "Frequency bands": "5650 MHz to 5725 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Twenty-fourth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "CCTV access device",
+        "Frequency bands": "5725 MHz to 5875 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Twenty-fourth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Ultra - Wideband (UWB) communication device (Generic and road/ rail vehicles)",
+        "Frequency bands": "3100 MHz to 3400 MHz",
+        "Maximum transmit power/ field strength/Conditions": "-36.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Ultra - Wideband (UWB) communication device (Generic and road/ rail vehicles)",
+        "Frequency bands": "3400 MHz to 3800 MHz\u00b2",
+        "Maximum transmit power/ field strength/Conditions": "-40.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Ultra - Wideband (UWB) communication device (Generic and road/ rail vehicles)",
+        "Frequency bands": "3800 MHz to 6000 MHz",
+        "Maximum transmit power/ field strength/Conditions": "-30.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Ultra - Wideband (UWB) communication device (Generic and road/ rail vehicles)",
+        "Frequency bands": "6000 MHz to 8500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "0.00 dBm EIRP/ -13.3dBm EIRP (road/ rail vehicle)",
+        "Reference/Remarks": "Refer to Twenty-fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Ultra - Wideband (UWB) communication device (Generic and road/ rail vehicles)",
+        "Frequency bands": "8500 MHz to 10600 MHz",
+        "Maximum transmit power/ field strength/Conditions": "-25.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-fifth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Automotive radar device",
+        "Frequency bands": "21.65 GHz to 22 GHz",
+        "Maximum transmit power/ field strength/Conditions": "0.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-sixth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Automotive radar device",
+        "Frequency bands": "22 GHz to 29.5 GHz",
+        "Maximum transmit power/ field strength/Conditions": "0.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-sixth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Automotive radar device",
+        "Frequency bands": "76 GHz to 77 GHz",
+        "Maximum transmit power/ field strength/Conditions": "55.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-sixth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Automotive radar device",
+        "Frequency bands": "77 GHz to 81 GHz",
+        "Maximum transmit power/ field strength/Conditions": "55.00 dBm EIRP",
+        "Reference/Remarks": "Refer to Twenty-sixth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "9 kHz to 90 kHz",
+        "Maximum transmit power/ field strength/Conditions": "72 dBuA/m at 10 m",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "90 kHz to 119 kHz",
+        "Maximum transmit power/ field strength/Conditions": "42 dBuA/m at 10 m",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "119 kHz to 135 kHz",
+        "Maximum transmit power/ field strength/Conditions": "66 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "135 kHz to 140 kHz",
+        "Maximum transmit power/ field strength/Conditions": "42 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "140 kHz to 148.5 kHz",
+        "Maximum transmit power/ field strength/Conditions": "37.7 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "315 kHz to 400 kHz",
+        "Maximum transmit power/ field strength/Conditions": "-5 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "400 kHz to 600 kHz",
+        "Maximum transmit power/ field strength/Conditions": "-8 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "984 kHz to 7484 kHz",
+        "Maximum transmit power/ field strength/Conditions": "9 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "3155 kHz to 3400 kHz",
+        "Maximum transmit power/ field strength/Conditions": "13.5 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "6765 kHz to 6795 kHz",
+        "Maximum transmit power/ field strength/Conditions": "42 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "7400 kHz to 8800 kHz",
+        "Maximum transmit power/ field strength/Conditions": "9 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "10200 kHz to 11000 kHz",
+        "Maximum transmit power/ field strength/Conditions": "9 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "13553 kHz to 13567 kHz",
+        "Maximum transmit power/ field strength/Conditions": "42 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "26957 kHz to 27283 kHz",
+        "Maximum transmit power/ field strength/Conditions": "42 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "148.5 kHz to 30 MHz",
+        "Maximum transmit power/ field strength/Conditions": "-5 dBuA/m at 10 m",
+        "Reference/Remarks": "Refer to Twenty-seventh Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Inductive application device",
+        "Frequency bands": "49 MHz",
+        "Maximum transmit power/ field strength/Conditions": "18.02 dB\u00b5A/m at 10m",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Personal Locator Beacon (PLB) device",
+        "Frequency bands": "406.0 MHz to 406.1 MHz",
+        "Maximum transmit power/ field strength/Conditions": "The transmitter output power shall be within the limits of 5W \u00b1 2dB (35 dBm - 39 dBm) measured into a 50-Ohm load, with a voltage standing-wave ratio (VSWR) not greater than 1.25:1",
+        "Reference/Remarks": "Refer to Twenty-ninth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Personal Locator Beacon (PLB) device",
+        "Frequency bands": "121.5 MHz",
+        "Maximum transmit power/ field strength/Conditions": "Between 25 and 100 mW Effective Radiated Peak Envelope Power (ERPEP).",
+        "Reference/Remarks": "Refer to Twenty-ninth Schedule on detailed conditions of operation."
+    },
+    {
+        "Applications": "Personal Locator Beacon (PLB) device",
+        "Frequency bands": "433 MHz to 435 MHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": null
+    },
+    {
+        "Applications": "Unmanned Aircraft Systems (UAS) device",
+        "Frequency bands": "2400 MHz to 2500 MHz",
+        "Maximum transmit power/ field strength/Conditions": "500 mW EIRP",
+        "Reference/Remarks": "Refer to Thirtieth Schedule on Detailed conditions of operation."
+    },
+    {
+        "Applications": "Unmanned Aircraft Systems (UAS) device",
+        "Frequency bands": "5725 MHz to 5875 MHz",
+        "Maximum transmit power/ field strength/Conditions": "1 W EIRP",
+        "Reference/Remarks": "Refer to Thirtieth Schedule on Detailed conditions of operation."
+    },
+    {
+        "Applications": "Unmanned Aircraft Systems (UAS) device",
+        "Frequency bands": "24.05 GHz to 24.25 GHz",
+        "Maximum transmit power/ field strength/Conditions": "100 mW EIRP",
+        "Reference/Remarks": "Refer to Thirtieth Schedule on Detailed conditions of operation."
+    }
+]

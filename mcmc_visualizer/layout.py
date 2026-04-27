@@ -77,6 +77,17 @@ SPECTRUM_PANEL_BODY_STYLE = {
     "padding": "12px 16px 16px 16px",
 }
 
+DATATABLE_CELL_SELECTION_CSS = [
+    {
+        "selector": ".dash-spreadsheet td.cell--selected, .dash-spreadsheet td.focused",
+        "rule": "background-color: inherit !important; border: 1px solid #dee2e6 !important;",
+    },
+    {
+        "selector": ".dash-spreadsheet td.cell--selected *, .dash-spreadsheet td.focused *",
+        "rule": "color: inherit !important;",
+    },
+]
+
 
 def create_frequency_filter_row():
     """Create the top frequency filter row per filter_example.png."""
@@ -272,6 +283,7 @@ def create_allocations_table():
         ],
         sort_action="native",
         filter_action="native",
+        css=DATATABLE_CELL_SELECTION_CSS,
     )
 
 
@@ -309,6 +321,7 @@ def create_footnotes_table():
         ],
         sort_action="native",
         filter_action="native",
+        css=DATATABLE_CELL_SELECTION_CSS,
     )
 
 
@@ -343,6 +356,7 @@ def create_applications_table():
                 "backgroundColor": "#f8f9fa",
             },
         ],
+        css=DATATABLE_CELL_SELECTION_CSS,
     )
 
 
@@ -350,7 +364,13 @@ def create_allocation_tab():
     """Create the Allocation tab content."""
     return html.Div([
         # Store for the currently selected allocation row index
-        dcc.Store(id="allocations-selected-row", data=None),
+        html.Div(
+            [
+                dcc.Store(id="allocations-selected-row", data=None),
+                dcc.Store(id="selected-footnote-store", data=None),
+            ],
+            style={"display": "none"},
+        ),
         dbc.Row(
             [
                 dbc.Col(
@@ -362,7 +382,32 @@ def create_allocation_tab():
                     [
                         create_allocation_section(
                             "Allocations",
-                            create_allocations_table(),
+                            html.Div(
+                                [
+                                    html.Div(
+                                        [
+                                            html.Span(
+                                                id="spectrum-selection-text",
+                                                style={"fontWeight": "600", "color": "#4a3058"},
+                                            ),
+                                            dbc.Button(
+                                                "Clear spectrum filter",
+                                                id="clear-spectrum-selection-btn",
+                                                color="link",
+                                                className="p-0",
+                                                style={
+                                                    "fontWeight": "600",
+                                                    "textDecoration": "none",
+                                                    "color": BRAND_PURPLE,
+                                                },
+                                            ),
+                                        ],
+                                        id="spectrum-selection-notice",
+                                        style={"display": "none"},
+                                    ),
+                                    create_allocations_table(),
+                                ]
+                            ),
                             body_style=ALLOCATION_TABLE_SECTION_BODY_STYLE,
                         ),
                         create_allocation_section(
